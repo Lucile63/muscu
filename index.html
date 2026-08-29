@@ -146,7 +146,7 @@ transform:translate(-50%,-46%) scale(.97);opacity:0;pointer-events:none;transiti
     <article class="card"><div class="pad" style="height:100%;display:flex;flex-direction:column"><div class="row"><div><div class="eye">OBJECTIF DE SEMAINE</div><h3 class="title" style="margin-top:6px">Régularité, pas épuisement</h3></div><div class="ring" id="ring"><b id="ringText">0%</b></div></div><div class="mini" id="miniWeek" style="margin-top:23px"></div><button class="btn soft block" data-route="week" style="margin-top:auto">Ouvrir le planning</button></div></article>
   </div>
   <div class="grid g4 section">
-    <article class="card kpi"><label>Séances musculation</label><strong id="kpiSessions">0 / 2</strong><small>Cette semaine</small></article>
+    <article class="card kpi interactive-kpi" id="muscleSessionsCard" role="button" tabindex="0" aria-label="Consulter et modifier les séances de musculation passées"><label>Séances musculation</label><strong id="kpiSessions">0 / 2</strong><small>Cette semaine · Consulter / modifier</small></article>
     <article class="card kpi"><label>Phase</label><strong id="kpiPhase" style="font-size:23px">Reprise</strong><small>Technique et régularité</small></article>
     <article class="card kpi"><label>Dernière mesure</label><strong id="kpiWeight">54,6 kg</strong><small id="kpiWeightDate">Point de départ</small></article>
     <article class="card kpi"><label>Prochain bilan</label><strong style="font-size:23px">4 semaines</strong><small>Photos, mesures, charges</small></article>
@@ -180,6 +180,12 @@ transform:translate(-50%,-46%) scale(.97);opacity:0;pointer-events:none;transiti
 <section class="page" id="page-plan">
   <div class="heading"><div><div class="eye">ROADMAP PERSONNELLE</div><h2>Plan annuel</h2></div><p>Deux séances fixes par semaine, quatre machines seulement. Le volume baisse autour des courses et des gros blocs trail ; la progression reprend dès que la récupération le permet.</p></div>
   <div class="plan"><article class="card"><div class="pad"><div class="months" id="monthList"></div></div></article><article class="card"><div class="pad" id="monthDetail"></div></article></div>
+  <section class="section">
+    <div class="row plan-sessions-head">
+      <div><div class="eye">SÉANCES DU PLAN</div><h3 class="title" style="margin-top:6px">Détail des séances</h3><p class="muted plan-sessions-copy">Les séances affichées ici sont générées automatiquement depuis le plan actif. Toute nouvelle séance ajoutée au programme apparaîtra dans cette liste.</p></div>
+    </div>
+    <div class="plan-session-grid" id="planSessions"></div>
+  </section>
 </section>
 
 <section class="page" id="page-progress">
@@ -283,8 +289,22 @@ transform:translate(-50%,-46%) scale(.97);opacity:0;pointer-events:none;transiti
   </div><footer class="modal-foot"><button type="button" class="btn soft close-modal">Annuler</button><button class="btn primary">Enregistrer</button></footer></form>
 </section>
 
+<section class="modal workout-history-modal" id="workoutHistoryModal">
+  <header class="modal-head"><div><div class="eye">SÉANCES MUSCULATION</div><h2>Historique des séances</h2></div><button class="x close-modal">×</button></header>
+  <div class="modal-body">
+    <div class="history-summary" id="workoutHistorySummary"></div>
+    <div class="history-list" id="workoutHistoryList"></div>
+  </div>
+</section>
+
+<section class="modal plan-session-modal" id="planSessionModal">
+  <header class="modal-head"><div><div class="eye">SÉANCE DU PLAN</div><h2 id="planSessionModalTitle">Séance</h2></div><button class="x close-modal">×</button></header>
+  <div class="modal-body" id="planSessionModalBody"></div>
+  <footer class="modal-foot"><button type="button" class="btn soft close-modal">Fermer</button></footer>
+</section>
+
 <section class="workout" id="workout">
-  <header class="wtop"><div><div class="eye" style="color:var(--bronze2)">SÉANCE EN COURS</div><h2 id="workoutTitle">Séance B</h2></div><div style="display:flex;gap:7px"><button class="btn light small" id="quitWorkout">Quitter</button><button class="btn primary small" id="finishWorkout">Terminer</button></div></header>
+  <header class="wtop"><div><div class="eye" id="workoutModeEye" style="color:var(--bronze2)">SÉANCE EN COURS</div><h2 id="workoutTitle">Séance B</h2></div><div style="display:flex;gap:7px"><button class="btn light small" id="quitWorkout">Quitter</button><button class="btn primary small" id="finishWorkout">Terminer</button></div></header>
   <div class="wbody" id="workoutBody"></div>
 </section>
 <div class="timer" id="timer"><span>Repos</span><b id="timerText">02:00</b><button id="stopTimer">×</button></div>
@@ -429,7 +449,35 @@ function renderWeek(){
 }
 function renderPlan(){
  $('#monthList').innerHTML=PLAN.map(x=>`<button class="month ${x.id===monthId?'active':''}" data-month="${x.id}"><span class="mno">${x.no}</span><span><b>${x.label}</b><small>${x.obj}</small></span><span>›</span></button>`).join('');
- const x=PLAN.find(x=>x.id===monthId);$('#monthDetail').innerHTML=`<div class="plan-hero"><div class="eye" style="color:var(--bronze2)">${x.label.toUpperCase()}</div><h3>${x.obj}</h3><p>${x.desc}</p><div class="prio">${x.prio.map(y=>`<span>${y}</span>`).join('')}</div></div><div class="weeks">${x.weeks.map(y=>`<div class="wk"><time>${y[0]}</time><div><b>${y[1]}</b><p>${y[2]}</p></div></div>`).join('')}</div>`
+ const x=PLAN.find(x=>x.id===monthId);$('#monthDetail').innerHTML=`<div class="plan-hero"><div class="eye" style="color:var(--bronze2)">${x.label.toUpperCase()}</div><h3>${x.obj}</h3><p>${x.desc}</p><div class="prio">${x.prio.map(y=>`<span>${y}</span>`).join('')}</div></div><div class="weeks">${x.weeks.map(y=>`<div class="wk"><time>${y[0]}</time><div><b>${y[1]}</b><p>${y[2]}</p></div></div>`).join('')}</div>`;
+ renderPlanSessions();
+}
+function renderPlanSessions(){
+ const entries=Object.entries(S);
+ $('#planSessions').innerHTML=entries.map(([key,sess])=>`<article class="card plan-session-card">
+  <div class="pad">
+   <div class="plan-session-top"><span class="plan-session-key">${esc(key)}</span><div class="plan-session-stats"><span>${sess.ex.length} exercices</span><span>≈ ${sess.dur} min</span><span>RIR ${sess.rir}</span></div></div>
+   <h4>${esc(sess.n)}</h4><p>${esc(sess.sub)}</p>
+   <div class="plan-session-preview">${sess.ex.map((id,i)=>{const ex=E[id];return `<div><span>${String(i+1).padStart(2,'0')}</span><b>${esc(ex?.n||id)}</b><small>${ex?`${ex.sets} × ${ex.reps}`:'—'}</small></div>`}).join('')}</div>
+   <button class="btn dark block" data-plan-session="${esc(key)}">Voir le détail</button>
+  </div>
+ </article>`).join('');
+}
+function openPlanSession(key){
+ const sess=S[key];if(!sess)return;
+ $('#planSessionModalTitle').textContent=sess.n;
+ $('#planSessionModalBody').innerHTML=`
+  <div class="plan-session-summary"><div><span>Exercices</span><b>${sess.ex.length}</b></div><div><span>Durée</span><b>≈ ${sess.dur} min</b></div><div><span>Intensité</span><b>RIR ${sess.rir}</b></div></div>
+  <div class="note plan-session-note">${esc(sess.sub)}</div>
+  <div class="plan-session-detail-list">${sess.ex.map((id,i)=>{const ex=E[id];if(!ex)return'';const pm=mainMachine(id);return `<article class="plan-session-exercise">
+   <div class="plan-session-ex-no">${String(i+1).padStart(2,'0')}</div>
+   <div class="plan-session-ex-main"><div class="row"><div><h4>${esc(ex.n)}</h4><p>${esc(ex.t)}</p></div>${numChip(id)}</div>
+    <div class="plan-session-prescription"><span><b>${ex.sets}</b><small>séries</small></span><span><b>${esc(ex.reps)}</b><small>répétitions</small></span><span><b>RIR ${esc(ex.rir)}</b><small>intensité</small></span><span><b>${ex.rest}s</b><small>repos</small></span></div>
+    <div class="plan-session-machine"><span>Machine recommandée</span><b>${esc(pm.mach?.name||'Machine')}</b></div>
+    <button class="detail plan-ex-detail" data-plan-ex-detail="${id}">Machine / exécution</button>
+   </div>
+  </article>`}).join('')}</div>`;
+ openModal('#planSessionModal');
 }
 
 function muscleSvg(view,primary=[],secondary=[]){
@@ -584,9 +632,10 @@ function lastExerciseData(id){
  return [...state.workouts].sort((a,b)=>(b.finishedAt||b.date).localeCompare(a.finishedAt||a.date)).find(w=>w.exercises?.[id])?.exercises[id]||null
 }
 function makeTourExercises(key,source=null){
- const sess=S[key],exercises={};
- sess.ex.forEach(id=>{
+ const sess=S[key],exercises={},ids=source?Object.keys(source):sess.ex;
+ ids.forEach(id=>{
   const ex=E[id],last=lastExerciseData(id),src=source?.[id]?.sets||[];
+  if(!ex)return;
   exercises[id]={sets:Array.from({length:ex.sets},(_,i)=>({
    weight:src[i]?.weight??last?.sets?.[i]?.weight??'',
    reps:src[i]?.reps??last?.sets?.[i]?.reps??'',
@@ -596,19 +645,45 @@ function makeTourExercises(key,source=null){
  });
  return exercises
 }
+function cloneData(x){return JSON.parse(JSON.stringify(x))}
+function workoutTours(w){
+ if(Array.isArray(w?.tours)&&w.tours.length)return cloneData(w.tours);
+ if(w?.exercises)return [{exercises:cloneData(w.exercises)}];
+ return [{exercises:makeTourExercises(w?.key||sessionKey)}]
+}
 function makeDraft(key=sessionKey){
  sessionKey=key;
- draft={key,date:iso(),startedAt:new Date().toISOString(),tours:[{exercises:makeTourExercises(key)}]}
+ draft={key,date:iso(),startedAt:new Date().toISOString(),editingWorkoutId:null,originalDuration:null,tours:[{exercises:makeTourExercises(key)}]}
+}
+function openWorkoutHistory(){
+ renderWorkoutHistoryModal();openModal('#workoutHistoryModal')
+}
+function renderWorkoutHistoryModal(){
+ const list=[...state.workouts].sort((a,b)=>(b.finishedAt||b.date).localeCompare(a.finishedAt||a.date));
+ const totalTours=list.reduce((sum,w)=>sum+(w.tourCount||w.tours?.length||1),0);
+ $('#workoutHistorySummary').innerHTML=`<div><b>${list.length}</b><span>Séance${list.length>1?'s':''}</span></div><div><b>${totalTours}</b><span>Tour${totalTours>1?'s':''} enregistrés</span></div>`;
+ $('#workoutHistoryList').innerHTML=list.length?list.map(w=>{
+  const tours=w.tourCount||w.tours?.length||1;
+  const key=w.key||'—';
+  return `<article class="history-workout-card"><div class="history-workout-main"><span class="history-workout-date">${fmt(parse(w.date),{weekday:'short',day:'numeric',month:'short',year:'numeric'})}</span><h3>${esc(w.name||S[w.key]?.n||'Séance')} <span>${esc(key)}</span></h3><p>${tours} tour${tours>1?'s':''} · ${w.duration||'—'} min</p></div><div class="history-workout-actions"><button class="btn dark small" data-edit-workout="${w.id}">Consulter / modifier</button><button class="link danger-link" data-delete-workout="${w.id}">Supprimer</button></div></article>`
+ }).join(''):'<div class="empty"><div><b>Aucune séance enregistrée</b>Les séances terminées apparaîtront ici.</div></div>'
+}
+function openHistoricalWorkout(id){
+ const w=state.workouts.find(x=>String(x.id)===String(id));if(!w)return;
+ closeModals();sessionKey=w.key||sessionKey;
+ const tours=workoutTours(w),exerciseOrder=Object.keys(tours[0]?.exercises||{});
+ draft={key:w.key||sessionKey,date:w.date||iso(),startedAt:new Date().toISOString(),editingWorkoutId:w.id,originalDuration:w.duration||null,exerciseOrder,tours};
+ renderWorkout();$('#workout').classList.add('open');document.body.style.overflow='hidden'
 }
 function renderWorkout(){
- if(!draft)makeDraft(sessionKey);const sess=S[draft.key],tourCount=draft.tours.length;
- $('#workoutTitle').textContent=`${sess.n} — ${sess.sub}`;
+ if(!draft)makeDraft(sessionKey);const sess=S[draft.key],tourCount=draft.tours.length,isEditing=!!draft.editingWorkoutId,exerciseOrder=(draft.exerciseOrder?.length?draft.exerciseOrder:sess.ex).filter(id=>E[id]);
+ $('#workoutTitle').textContent=`${sess.n} — ${sess.sub}`;$('#workoutModeEye').textContent=isEditing?'MODIFICATION D’UNE SÉANCE PASSÉE':'SÉANCE EN COURS';$('#finishWorkout').textContent=isEditing?'Enregistrer':'Terminer';
  $('#workoutBody').innerHTML=`
-  <div class="session-picker">${Object.entries(S).map(([k,x])=>`<button class="${k===draft.key?'active':''}" data-session-switch="${k}"><b>${k}</b><span>${x.sub}</span></button>`).join('')}</div>
-  <div class="workout-intro"><div><div class="eye">OBJECTIF DE SÉANCE</div><h3>${sess.ex.length} exercices · ${tourCount} tour${tourCount>1?'s':''} · RIR ${sess.rir}</h3></div><div class="note">Effectue les 4 exercices du tour. Si tu veux prolonger la séance, ajoute ensuite un <strong>tour complet</strong> : les 4 exercices seront recréés ensemble.</div></div>
+  <div class="session-picker ${isEditing?'editing':''}">${Object.entries(S).map(([k,x])=>`<button class="${k===draft.key?'active':''}" data-session-switch="${k}" ${isEditing?'disabled':''}><b>${k}</b><span>${x.sub}</span></button>`).join('')}</div>
+  <div class="workout-intro"><div><div class="eye">${isEditing?'SÉANCE ENREGISTRÉE':'OBJECTIF DE SÉANCE'}</div><h3>${exerciseOrder.length} exercices · ${tourCount} tour${tourCount>1?'s':''} · RIR ${sess.rir}</h3>${isEditing?`<label class="history-date-field"><span>Date de la séance</span><input class="input" type="date" value="${draft.date}" data-workout-date></label>`:''}</div><div class="note">${isEditing?'Tu peux corriger les charges, répétitions, RIR, validations et tours. Enregistre pour remplacer la séance existante.':'Effectue les 4 exercices du tour. Si tu veux prolonger la séance, ajoute ensuite un <strong>tour complet</strong> : les 4 exercices seront recréés ensemble.'}</div></div>
   ${draft.tours.map((tour,ti)=>`<section class="workout-round" data-workout-round="${ti}">
-    <div class="round-head"><div><div class="eye">BLOC COMPLET</div><h3>Tour ${ti+1}</h3><p>${sess.ex.length} exercices · même ordre · mêmes objectifs</p></div>${ti>0?`<button class="remove-round-btn" data-remove-round="${ti}">Supprimer ce tour</button>`:''}</div>
-    ${sess.ex.map((id,ei)=>{
+    <div class="round-head"><div><div class="eye">BLOC COMPLET</div><h3>Tour ${ti+1}</h3><p>${exerciseOrder.length} exercices · même ordre · mêmes objectifs</p></div>${ti>0?`<button class="remove-round-btn" data-remove-round="${ti}">Supprimer ce tour</button>`:''}</div>
+    ${exerciseOrder.map((id,ei)=>{
      const ex=E[id],pm=mainMachine(id),sets=tour.exercises[id].sets;
      return `<article class="wex" data-workout-exercise="${ti}|${id}">
       <header class="wex-head"><div><h3>${String(ei+1).padStart(2,'0')} — ${ex.n}</h3><p>${ex.t} · ${ex.sets} série${ex.sets>1?'s':''} · ${ex.reps} · RIR ${ex.rir}</p><div class="wmach"><span>${esc(pm.mach?.name||'Machine')}</span>${numChip(id)}</div></div>
@@ -623,7 +698,7 @@ function renderWorkout(){
      </article>`
     }).join('')}
   </section>`).join('')}
-  <div class="round-actions"><button class="btn add-round-btn" data-add-round><span>＋</span><span><b>Ajouter un tour complet</b><small>${sess.ex.map(id=>E[id].n).join(' + ')}</small></span></button></div>`
+  <div class="round-actions"><button class="btn add-round-btn" data-add-round><span>＋</span><span><b>Ajouter un tour complet</b><small>${exerciseOrder.map(id=>E[id].n).join(' + ')}</small></span></button></div>`
 }
 function addWorkoutRound(){
  if(!draft)return;
@@ -661,9 +736,10 @@ function finishWorkout(){
  if(!draft)return;
  const completed=draft.tours.flatMap(t=>Object.values(t.exercises||{}).flatMap(x=>x.sets||[])).filter(x=>x.done||x.weight!==''||x.reps!=='').length;
  if(!completed&&!confirm('Aucune série n’est renseignée. Enregistrer tout de même la séance ?'))return;
- const ended=new Date(),duration=Math.max(1,Math.round((ended-new Date(draft.startedAt))/60000)),exercises=mergedTourExercises(draft.tours);
- state.workouts.push({id:Date.now(),date:draft.date,key:draft.key,name:S[draft.key].n,duration,finishedAt:ended.toISOString(),tourCount:draft.tours.length,tours:draft.tours,exercises});
- save();closeWorkout();draft=null;renderAll();toast(`Séance enregistrée · ${state.workouts.at(-1).tourCount} tour${state.workouts.at(-1).tourCount>1?'s':''}`)
+ const ended=new Date(),isEditing=!!draft.editingWorkoutId,duration=isEditing?(draft.originalDuration||1):Math.max(1,Math.round((ended-new Date(draft.startedAt))/60000)),exercises=mergedTourExercises(draft.tours);
+ const payload={id:isEditing?draft.editingWorkoutId:Date.now(),date:draft.date,key:draft.key,name:S[draft.key].n,duration,finishedAt:isEditing?(state.workouts.find(w=>String(w.id)===String(draft.editingWorkoutId))?.finishedAt||ended.toISOString()):ended.toISOString(),tourCount:draft.tours.length,tours:cloneData(draft.tours),exercises};
+ if(isEditing){const i=state.workouts.findIndex(w=>String(w.id)===String(draft.editingWorkoutId));if(i>=0)state.workouts[i]=payload}else state.workouts.push(payload);
+ save();closeWorkout();draft=null;renderAll();toast(isEditing?'Séance mise à jour':`Séance enregistrée · ${payload.tourCount} tour${payload.tourCount>1?'s':''}`)
 }
 function startRest(sec){
  stopRest();timerLeft=Number(sec)||60;$('#timer').classList.add('open');
@@ -715,7 +791,7 @@ function renderProgress(){
   return `<div class="mini-row"><i class="dot ${gain!=null&&gain>1.5?'done':''}"></i><div><b>${E[id].n}</b><small>${last?`${last.weight} kg × ${last.reps}${gain!=null?` · ${gain>=0?'+':''}${gain.toFixed(0)} %`:''}`:'Aucune donnée'}</small></div></div>`
  }).join('');
  $('#movesUp').textContent=`${up} / ${keys.length}`;
- $('#workoutHistory').innerHTML=[...state.workouts].sort((a,b)=>(b.finishedAt||b.date).localeCompare(a.finishedAt||a.date)).slice(0,30).map(w=>`<tr><td>${fmt(parse(w.date),{day:'2-digit',month:'short',year:'numeric'})}</td><td>${esc(w.name||S[w.key]?.n||'Séance')}${w.tourCount>1?` · ${w.tourCount} tours`:''}</td><td>${Object.keys(w.exercises||{}).length}</td><td>${w.duration||'—'} min</td><td><button class="link danger-link" data-delete-workout="${w.id}">Supprimer</button></td></tr>`).join('')||'<tr><td colspan="5">Aucune séance enregistrée.</td></tr>'
+ $('#workoutHistory').innerHTML=[...state.workouts].sort((a,b)=>(b.finishedAt||b.date).localeCompare(a.finishedAt||a.date)).slice(0,30).map(w=>`<tr><td>${fmt(parse(w.date),{day:'2-digit',month:'short',year:'numeric'})}</td><td>${esc(w.name||S[w.key]?.n||'Séance')}${w.tourCount>1?` · ${w.tourCount} tours`:''}</td><td>${Object.keys(w.exercises||{}).length}</td><td>${w.duration||'—'} min</td><td><div class="history-actions"><button class="link" data-edit-workout="${w.id}">Consulter / modifier</button><button class="link danger-link" data-delete-workout="${w.id}">Supprimer</button></div></td></tr>`).join('')||'<tr><td colspan="5">Aucune séance enregistrée.</td></tr>'
 }
 function renderAll(){renderHeader();renderToday();renderWeek();renderPlan();renderProgress();renderBody();renderSettings()}
 
@@ -724,6 +800,10 @@ document.addEventListener('click',e=>{
  if(routeBtn){route(routeBtn.dataset.route);return}
  const detail=e.target.closest('[data-detail]');
  if(detail){openDrawer(detail.dataset.detail);return}
+ const planSession=e.target.closest('[data-plan-session]');
+ if(planSession){openPlanSession(planSession.dataset.planSession);return}
+ const planExDetail=e.target.closest('[data-plan-ex-detail]');
+ if(planExDetail){closeModals();openDrawer(planExDetail.dataset.planExDetail);return}
  const month=e.target.closest('[data-month]');
  if(month){monthId=month.dataset.month;renderPlan();return}
  const fromDrawer=e.target.closest('[data-route-from-drawer]');
@@ -744,13 +824,16 @@ document.addEventListener('click',e=>{
  if(rest){startRest(rest.dataset.rest);return}
  const sw=e.target.closest('[data-session-switch]');
  if(sw){if(draft&&draft.tours.flatMap(t=>Object.values(t.exercises||{}).flatMap(x=>x.sets||[])).some(s=>s.done||s.weight!==''||s.reps!=='')&&!confirm('Changer de séance et abandonner la saisie en cours ?'))return;makeDraft(sw.dataset.sessionSwitch);renderWorkout();return}
+ const editW=e.target.closest('[data-edit-workout]');
+ if(editW){openHistoricalWorkout(editW.dataset.editWorkout);return}
  const del=e.target.closest('[data-delete-workout]');
- if(del){if(confirm('Supprimer définitivement cette séance ?')){state.workouts=state.workouts.filter(w=>String(w.id)!==String(del.dataset.deleteWorkout));save();renderAll();toast('Séance supprimée')}return}
+ if(del){if(confirm('Supprimer définitivement cette séance ?')){state.workouts=state.workouts.filter(w=>String(w.id)!==String(del.dataset.deleteWorkout));save();renderAll();if($('#workoutHistoryModal').classList.contains('open'))renderWorkoutHistoryModal();toast('Séance supprimée')}return}
 });
 document.addEventListener('input',e=>{
  if(e.target.matches('[data-workout-input]')&&draft){
   const[ti,id,i,f]=e.target.dataset.workoutInput.split('|'),set=draft.tours[+ti]?.exercises?.[id]?.sets?.[+i];if(set)set[f]=e.target.value
  }
+ if(e.target.matches('[data-workout-date]')&&draft)draft.date=e.target.value;
 });
 document.addEventListener('change',e=>{
  if(e.target.matches('[data-machine-toggle]')){
@@ -767,8 +850,12 @@ $$('.tab').forEach(t=>t.addEventListener('click',()=>{
 }));
 $('#startBtn').addEventListener('click',()=>openWorkout(sessionKey));
 $('#openWorkout').addEventListener('click',()=>openWorkout(sessionKey));
+$('#muscleSessionsCard').addEventListener('click',openWorkoutHistory);
+$('#muscleSessionsCard').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openWorkoutHistory()}});
 $('#quitWorkout').addEventListener('click',()=>{
- const used=draft&&draft.tours.flatMap(t=>Object.values(t.exercises||{}).flatMap(x=>x.sets||[])).some(s=>s.done||s.weight!==''||s.reps!=='');
+ if(!draft){closeWorkout();return}
+ if(draft.editingWorkoutId){if(confirm('Quitter sans enregistrer les modifications ?')){draft=null;closeWorkout();openWorkoutHistory()}return}
+ const used=draft.tours.flatMap(t=>Object.values(t.exercises||{}).flatMap(x=>x.sets||[])).some(s=>s.done||s.weight!==''||s.reps!=='');
  if(!used||confirm('Quitter sans enregistrer cette séance ?')){draft=null;closeWorkout()}
 });
 $('#finishWorkout').addEventListener('click',finishWorkout);
@@ -833,7 +920,12 @@ renderAll();
 .chart-caption{display:flex;justify-content:space-between;gap:12px;margin-top:4px;padding:0 5px;color:var(--muted);font-size:9px}.chart-caption b{color:var(--ink);font-size:10px}.chart-empty{min-height:260px}
 .timer.open{transform:translate(-50%,0)}.num.empty{min-height:29px;padding:0 9px;display:inline-flex}.big-num.empty{min-height:30px;padding:0 9px;display:flex}.metric .empty{min-height:0}
 .workout-round{margin:0 0 18px;padding:14px;border:1px solid var(--line);border-radius:22px;background:#ebe6de66}.workout-round:first-of-type{background:#ffffff3f}.round-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:4px 3px 13px}.round-head h3{margin:4px 0 2px;font-size:21px;letter-spacing:-.045em}.round-head p{margin:0;color:var(--muted);font-size:9px}.remove-round-btn{border:0;background:transparent;color:var(--danger);font-size:9px;font-weight:850;text-decoration:underline;text-underline-offset:3px;cursor:pointer}.round-actions{padding:4px 0 22px}.add-round-btn{width:100%;min-height:66px;background:linear-gradient(135deg,var(--forest),#1f352f);color:#fff;border:1px solid #ffffff15;box-shadow:0 14px 35px #28494124;justify-content:flex-start;text-align:left;padding:10px 18px}.add-round-btn>span:first-child{font-size:25px;line-height:1;color:var(--bronze2)}.add-round-btn>span:last-child{display:grid;gap:3px}.add-round-btn b{font-size:12px}.add-round-btn small{font-size:9px;font-weight:650;color:#ffffff8f;line-height:1.35}.workout-round .wex:last-child{margin-bottom:0}
-@media(max-width:600px){.session-picker{grid-template-columns:1fr}.session-picker button{display:flex;align-items:center;gap:10px}.session-picker span{margin:0}.workout-intro{grid-template-columns:1fr}.chart-caption{align-items:flex-start;flex-direction:column}.wtop{padding-top:max(0px,env(safe-area-inset-top))}.workout-round{padding:9px;border-radius:18px}.round-head{align-items:flex-start}.remove-round-btn{min-height:30px}.add-round-btn{min-height:72px}}
+.interactive-kpi{cursor:pointer;transition:.18s}.interactive-kpi:hover{transform:translateY(-2px);border-color:#a9784955;box-shadow:0 14px 34px rgba(23,31,29,.10)}.interactive-kpi:focus-visible{outline:3px solid #a9784935;outline-offset:3px}
+.workout-history-modal{width:min(760px,calc(100vw - 26px))}.history-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-bottom:14px}.history-summary>div{border:1px solid var(--line);border-radius:15px;padding:14px;background:#fff}.history-summary b{display:block;font-size:23px;letter-spacing:-.05em}.history-summary span{display:block;margin-top:3px;color:var(--muted);font-size:9px}.history-list{display:grid;gap:9px}.history-workout-card{border:1px solid var(--line);border-radius:17px;background:#fff;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:14px}.history-workout-date{font-size:9px;font-weight:850;text-transform:uppercase;letter-spacing:.07em;color:var(--bronze)}.history-workout-main h3{margin:5px 0 4px;font-size:14px}.history-workout-main h3 span{display:inline-grid;place-items:center;min-width:24px;height:22px;margin-left:4px;border-radius:7px;background:var(--soft);color:#75491f;font-size:9px}.history-workout-main p{margin:0;color:var(--muted);font-size:10px}.history-workout-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:flex-end}.history-actions{display:flex;align-items:center;gap:10px}.history-date-field{display:grid;gap:5px;margin-top:12px;max-width:190px}.history-date-field span{font-size:8px;font-weight:850;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}.session-picker.editing button:not(.active){opacity:.35}.session-picker button:disabled{cursor:default}
+@media(max-width:600px){.session-picker{grid-template-columns:1fr}.session-picker button{display:flex;align-items:center;gap:10px}.session-picker span{margin:0}.workout-intro{grid-template-columns:1fr}.chart-caption{align-items:flex-start;flex-direction:column}.wtop{padding-top:max(0px,env(safe-area-inset-top))}.workout-round{padding:9px;border-radius:18px}.round-head{align-items:flex-start}.remove-round-btn{min-height:30px}.add-round-btn{min-height:72px}.history-workout-card{align-items:flex-start;flex-direction:column}.history-workout-actions{width:100%;justify-content:space-between}.history-summary{grid-template-columns:1fr 1fr}.workout-history-modal{width:calc(100vw - 18px)}}
+
+.plan-sessions-head{align-items:flex-end;margin-bottom:14px}.plan-sessions-copy{font-size:11px;line-height:1.55;max-width:700px;margin:7px 0 0}.plan-session-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}.plan-session-card .pad{height:100%;display:flex;flex-direction:column}.plan-session-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.plan-session-key{width:39px;height:39px;border-radius:12px;background:var(--forest);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:900}.plan-session-stats{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.plan-session-stats span{min-height:25px;padding:0 8px;border-radius:999px;background:#ece7df;color:var(--muted);display:flex;align-items:center;font-size:8px;font-weight:800}.plan-session-card h4{margin:17px 0 5px;font-size:18px;letter-spacing:-.035em}.plan-session-card>div>p{margin:0;color:var(--muted);font-size:10px;line-height:1.5}.plan-session-preview{display:grid;gap:7px;margin:17px 0 18px}.plan-session-preview>div{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:9px;align-items:center;min-height:37px;padding:0 9px;border:1px solid var(--line);border-radius:11px;background:#ffffff8a}.plan-session-preview span{color:var(--bronze);font-size:9px;font-weight:900}.plan-session-preview b{font-size:10px}.plan-session-preview small{color:var(--muted);font-size:9px}.plan-session-card .btn{margin-top:auto}.plan-session-modal{width:min(700px,calc(100vw - 26px))}.plan-session-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.plan-session-summary>div{border:1px solid var(--line);border-radius:14px;padding:12px;background:#fff}.plan-session-summary span{display:block;color:var(--muted);font-size:8px;font-weight:850;text-transform:uppercase;letter-spacing:.08em}.plan-session-summary b{display:block;margin-top:6px;font-size:15px}.plan-session-note{margin-top:12px}.plan-session-detail-list{display:grid;gap:10px;margin-top:13px}.plan-session-exercise{display:grid;grid-template-columns:43px minmax(0,1fr);gap:11px;border:1px solid var(--line);border-radius:16px;padding:12px;background:#fff}.plan-session-ex-no{width:43px;height:43px;border-radius:12px;background:#ece7df;color:var(--bronze);display:grid;place-items:center;font-size:10px;font-weight:900}.plan-session-ex-main h4{margin:0;font-size:13px}.plan-session-ex-main p{margin:4px 0 0;color:var(--muted);font-size:9px}.plan-session-prescription{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:11px}.plan-session-prescription span{border-radius:10px;background:#f1ede7;padding:8px;text-align:center}.plan-session-prescription b{display:block;font-size:11px}.plan-session-prescription small{display:block;margin-top:3px;color:var(--muted);font-size:7px;text-transform:uppercase;letter-spacing:.06em}.plan-session-machine{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}.plan-session-machine span{color:var(--muted);font-size:8px;text-transform:uppercase;letter-spacing:.06em}.plan-session-machine b{font-size:9px}.plan-ex-detail{margin-top:9px}.plan-session-modal .modal-foot{padding-top:0}
+@media(max-width:600px){.plan-session-grid{grid-template-columns:1fr}.plan-session-top{align-items:flex-start}.plan-session-stats{justify-content:flex-start}.plan-session-summary{grid-template-columns:1fr 1fr 1fr}.plan-session-exercise{grid-template-columns:1fr}.plan-session-ex-no{width:36px;height:36px}.plan-session-prescription{grid-template-columns:1fr 1fr}.plan-session-machine{align-items:flex-start;flex-direction:column}}
 </style>
 </body>
 </html>
