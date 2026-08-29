@@ -132,7 +132,7 @@ transform:translate(-50%,-46%) scale(.97);opacity:0;pointer-events:none;transiti
     <button data-route="body"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="5" r="2.5"/><path d="M8 21l1-7-2-4a2.5 2.5 0 0 1 2.3-3.5h5.4A2.5 2.5 0 0 1 17 10l-2 4 1 7"/></svg><span>Corps</span></button>
     <button data-route="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M4 6h16M7 12h10M10 18h4"/></svg><span>Mon Keep Cool</span></button>
   </nav>
-  <div class="side-foot">Trail préservé.<br>Transformation athlétique sur 12 mois.<br>Données stockées dans ce navigateur.</div>
+  <div class="side-foot">Trail prioritaire.<br>2 séances • 4 machines.<br>Transformation athlétique sur 12 mois.<br>Données stockées dans ce navigateur.</div>
 </aside>
 <div class="wrap">
 <header class="top"><div><div class="eye" id="topEye">COACHING PERSONNEL</div><h1 id="topTitle">Aujourd’hui</h1></div><div style="display:flex;align-items:center;gap:9px"><div class="date" id="datePill"></div><button class="gear" data-route="settings" aria-label="Mon Keep Cool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16M7 12h10M10 18h4"/></svg></button></div></header>
@@ -140,7 +140,7 @@ transform:translate(-50%,-46%) scale(.97);opacity:0;pointer-events:none;transiti
 <section class="page active" id="page-today">
   <div class="grid g3">
     <article class="card hero span2"><div class="hero-in"><div class="chips"><span class="chip" id="phaseChip">PHASE • REPRISE</span><span class="chip" id="projectChip">JOUR 1 / 365</span></div>
-      <h2>Construire une silhouette <em>athlétique</em>, sans dévaluer le trail.</h2><p id="heroText">Séance B — Dos, épaules, bras et abdominaux. Exécution contrôlée.</p>
+      <h2>Construire une silhouette <em>athlétique</em>, sans dévaluer le trail.</h2><p id="heroText">Séance A — 4 machines. Force utile au trail et silhouette athlétique.</p>
       <div class="actions"><button class="btn primary" id="startBtn">Commencer la séance</button><button class="btn light" data-route="week">Voir la semaine</button></div>
     </div></article>
     <article class="card"><div class="pad" style="height:100%;display:flex;flex-direction:column"><div class="row"><div><div class="eye">OBJECTIF DE SEMAINE</div><h3 class="title" style="margin-top:6px">Régularité, pas épuisement</h3></div><div class="ring" id="ring"><b id="ringText">0%</b></div></div><div class="mini" id="miniWeek" style="margin-top:23px"></div><button class="btn soft block" data-route="week" style="margin-top:auto">Ouvrir le planning</button></div></article>
@@ -154,8 +154,8 @@ transform:translate(-50%,-46%) scale(.97);opacity:0;pointer-events:none;transiti
   <div class="grid g3 section">
     <article class="card span2"><div class="pad"><div class="row" style="align-items:flex-end"><div><div class="eye">SÉANCE DU JOUR</div><h3 class="title" id="todayTitle" style="margin-top:6px"></h3><div class="muted" id="todayMeta" style="font-size:10px;margin-top:4px"></div></div><button class="btn soft small" id="openWorkout">Ouvrir</button></div><div class="ex-list" id="todayExercises" style="margin-top:15px"></div></div></article>
     <article class="card"><div class="pad"><div class="eye">CAP SUR 12 MOIS</div><h3 class="title" style="margin-top:6px">Repères de transformation</h3><div class="mini" style="margin-top:20px">
-      <div class="mini-row"><i class="dot on"></i><div><b>8 semaines</b><small>Corps plus ferme, épaules visibles</small></div></div>
-      <div class="mini-row"><i class="dot"></i><div><b>4 mois</b><small>Différence nette sur les photos</small></div></div>
+      <div class="mini-row"><i class="dot on"></i><div><b>8 semaines</b><small>Technique installée, charges en progression</small></div></div>
+      <div class="mini-row"><i class="dot"></i><div><b>4 mois</b><small>Silhouette plus athlétique sur les photos</small></div></div>
       <div class="mini-row"><i class="dot"></i><div><b>9 mois</b><small>Silhouette franchement athlétique</small></div></div>
       <div class="mini-row"><i class="dot"></i><div><b>12 mois</b><small>Bilan complet</small></div></div>
     </div></div></article>
@@ -178,7 +178,7 @@ transform:translate(-50%,-46%) scale(.97);opacity:0;pointer-events:none;transiti
 </section>
 
 <section class="page" id="page-plan">
-  <div class="heading"><div><div class="eye">ROADMAP PERSONNELLE</div><h2>Plan annuel</h2></div><p>Chaque mois a une intention précise. Après la TransLantau, les blocs d’hypertrophie suivent un cycle de trois semaines progressives puis un délestage.</p></div>
+  <div class="heading"><div><div class="eye">ROADMAP PERSONNELLE</div><h2>Plan annuel</h2></div><p>Deux séances fixes par semaine, quatre machines seulement. Le volume baisse autour des courses et des gros blocs trail ; la progression reprend dès que la récupération le permet.</p></div>
   <div class="plan"><article class="card"><div class="pad"><div class="months" id="monthList"></div></div></article><article class="card"><div class="pad" id="monthDetail"></div></article></div>
 </section>
 
@@ -187,7 +187,7 @@ transform:translate(-50%,-46%) scale(.97);opacity:0;pointer-events:none;transiti
   <div class="grid g3">
     <article class="card kpi"><label>Adhérence sur 4 semaines</label><strong id="adherence">0%</strong><small id="adherenceText">Première séance à enregistrer</small></article>
     <article class="card kpi"><label>Séances terminées</label><strong id="sessionCount">0</strong><small>Historique local</small></article>
-    <article class="card kpi"><label>Mouvements en progression</label><strong id="movesUp">0 / 5</strong><small>Hip thrust, presse, leg curl, tirage, épaules</small></article>
+    <article class="card kpi"><label>Mouvements en progression</label><strong id="movesUp">0 / 4</strong><small>Presse, leg curl, tirage vertical, épaules</small></article>
   </div>
   <div class="grid g3 section">
     <article class="card span2"><div class="pad"><div class="row"><div><div class="eye">COURBE DE FORCE</div><h3 class="title" style="margin-top:6px">Meilleure série estimée</h3></div><select class="input" id="progressSelect" style="width:auto;min-width:180px"></select></div><div id="strengthChart"></div></div></article>
@@ -314,57 +314,60 @@ const M=[
 
 const E={
  hipThrust:{n:'Hip thrust',t:'Fessiers',sets:4,reps:'6–10',rest:150,rir:'2–3',v:'back',p:['glutes'],s:['ham','quads'],pn:['Grand fessier'],sn:['Ischio-jambiers','Quadriceps'],m:[['hip','rec','Option la plus simple pour charger progressivement.'],['smith','alt','Banc stable, barre au pli de hanche.'],['bench','plan','Banc + haltère ou disque.']],setup:['Omoplates contre le dossier ou le banc.','Pieds largeur de bassin ; tibias presque verticaux en haut.','Coussin placé au pli de hanche.'],move:['Pousser dans les talons.','Finir bassin neutre sans cambrer.','Contracter en haut puis redescendre lentement.'],avoid:['Hyperextension lombaire.','Pieds mal placés.','Rebond sur la charge.']},
- legPress:{n:'Presse à cuisses',t:'Quadriceps • Fessiers',sets:3,reps:'8–12',rest:150,rir:'2–3',v:'front',p:['quads'],s:['glutes','ham'],pn:['Quadriceps'],sn:['Grand fessier','Ischio-jambiers'],m:[['press','rec','Machine principale.'],['hack','alt','Alternative guidée.'],['smith','plan','Squat guidé léger.']],setup:['Bassin et dos en contact avec le dossier.','Pieds largeur de bassin, légèrement ouverts.','Amplitude sans décoller le bas du dos.'],move:['Descendre lentement.','Pousser par le milieu du pied et le talon.','Genoux alignés avec les orteils.'],avoid:['Verrouiller brutalement les genoux.','Décoller le bassin.','Genoux vers l’intérieur.']},
+ legPress:{n:'Presse à cuisses',t:'Quadriceps • Fessiers',sets:4,reps:'6–8',rest:150,rir:'2–3',v:'front',p:['quads'],s:['glutes','ham'],pn:['Quadriceps'],sn:['Grand fessier','Ischio-jambiers'],m:[['press','rec','Machine principale.'],['hack','alt','Alternative guidée.'],['smith','plan','Squat guidé léger.']],setup:['Bassin et dos en contact avec le dossier.','Pieds largeur de bassin, légèrement ouverts.','Amplitude sans décoller le bas du dos.'],move:['Descendre lentement.','Pousser par le milieu du pied et le talon.','Genoux alignés avec les orteils.'],avoid:['Verrouiller brutalement les genoux.','Décoller le bassin.','Genoux vers l’intérieur.']},
+ legPressSingle:{n:'Presse à cuisses — 1 jambe',t:'Quadriceps • Fessiers • Stabilité',sets:3,reps:'8–10 / jambe',rest:90,rir:'2–3',v:'front',p:['quads','glutes'],s:['ham'],pn:['Quadriceps','Grand fessier'],sn:['Ischio-jambiers'],m:[['press','rec','Même presse que la séance A, avec une charge nettement plus légère.']],setup:['Bassin et dos entièrement en contact avec le dossier.','Un pied placé au centre de la plateforme, dans l’axe du genou.','Réduire fortement la charge par rapport à la version à deux jambes.'],move:['Descendre lentement sans rotation du bassin.','Pousser par le milieu du pied et le talon.','Faire toutes les répétitions d’un côté puis changer de jambe.'],avoid:['Comparer la charge à la presse bilatérale.','Laisser le genou rentrer vers l’intérieur.','Décoller le bassin ou chercher une amplitude excessive.']},
  split:{n:'Fente bulgare',t:'Fessiers • Quadriceps',sets:2,reps:'8–10 / jambe',rest:120,rir:'2–3',v:'front',p:['quads','glutes'],s:['ham','calves'],pn:['Quadriceps','Grand fessier'],sn:['Ischio-jambiers','Mollets'],m:[['smith','rec','Guidage sécurisant.'],['dumb','alt','Un ou deux haltères.'],['bench','plan','Version poids du corps.']],setup:['Pied arrière sur banc bas.','Pied avant assez loin.','Buste légèrement incliné.'],move:['Descendre verticalement.','Pousser dans le pied avant.','Bassin stable.'],avoid:['Position trop étroite.','Rebond en bas.','Pousser avec la jambe arrière.']},
  legExtension:{n:'Leg extension',t:'Quadriceps',sets:3,reps:'10–15',rest:75,rir:'1–2',v:'front',p:['quads'],s:[],pn:['Quadriceps'],sn:[],m:[['ext','rec','Machine dédiée aux quadriceps.']],setup:['Axe machine aligné avec le genou.','Rouleau au-dessus de la cheville.','Dos plaqué.'],move:['Tendre sans élan.','Contracter une seconde.','Redescendre lentement.'],avoid:['Charge excessive.','Fesses décollées.','Genoux claqués.']},
  abductor:{n:'Abduction de hanche',t:'Moyen fessier',sets:3,reps:'15–25',rest:60,rir:'1–2',v:'back',p:['gluteMed'],s:['glutes'],pn:['Moyen fessier'],sn:['Grand fessier'],m:[['abd','rec','Machine dédiée.'],['cable','alt','Poulie basse avec chevillère.']],setup:['Coussins contre l’extérieur des genoux.','Bassin au fond du siège.','Tronc stable.'],move:['Ouvrir en contrôlant.','Marquer la contraction.','Revenir sans claquer les poids.'],avoid:['Rebond.','Cambrure forte.','Charge trop lourde.']},
  cableCrunch:{n:'Crunch à la poulie',t:'Abdominaux',sets:3,reps:'8–15',rest:75,rir:'1–2',v:'front',p:['abs'],s:[],pn:['Grand droit de l’abdomen'],sn:[],m:[['cable','rec','Poulie haute avec corde.'],['abs','alt','Machine abdominale guidée.']],setup:['Poulie en position haute.','À genoux à bonne distance.','Hanches relativement fixes.'],move:['Enrouler le sternum vers le bassin.','Expirer en contractant.','Remonter sans tirer avec les bras.'],avoid:['Flexion de hanche dominante.','Tirer avec les biceps.','Creuser le dos.']},
- latPulldown:{n:'Tirage vertical',t:'Dos • Biceps',sets:3,reps:'8–12',rest:120,rir:'2–3',v:'back',p:['lats'],s:['biceps','rear','traps'],pn:['Grand dorsal'],sn:['Biceps','Arrière d’épaule','Trapèzes moyens'],m:[['lat','rec','Mouvement principal prévu.'],['cable','alt','Poulie haute avec barre ou poignées.'],['conv','plan','Tirage convergent orienté vers le bas.']],setup:['Cuisses bloquées sous les supports.','Prise légèrement plus large que les épaules.','Poitrine sortie, épaules basses.'],move:['Tirer vers le haut de la poitrine.','Coudes dirigés vers le sol.','Remontée contrôlée.'],avoid:['Tirer derrière la nuque.','Grand élan du buste.','Épaules vers les oreilles.']},
+ latPulldown:{n:'Tirage vertical',t:'Dos • Biceps',sets:3,reps:'8–10',rest:90,rir:'2–3',v:'back',p:['lats'],s:['biceps','rear','traps'],pn:['Grand dorsal'],sn:['Biceps','Arrière d’épaule','Trapèzes moyens'],m:[['lat','rec','Mouvement principal prévu.'],['cable','alt','Poulie haute avec barre ou poignées.'],['conv','plan','Tirage convergent orienté vers le bas.']],setup:['Cuisses bloquées sous les supports.','Prise légèrement plus large que les épaules.','Poitrine sortie, épaules basses.'],move:['Tirer vers le haut de la poitrine.','Coudes dirigés vers le sol.','Remontée contrôlée.'],avoid:['Tirer derrière la nuque.','Grand élan du buste.','Épaules vers les oreilles.']},
+ latPulldownVolume:{n:'Tirage vertical',t:'Dos • Biceps',sets:3,reps:'10–12',rest:90,rir:'2–3',v:'back',p:['lats'],s:['biceps','rear','traps'],pn:['Grand dorsal'],sn:['Biceps','Arrière d’épaule','Trapèzes moyens'],m:[['lat','rec','Même machine que la séance A.'],['cable','alt','Poulie haute avec barre ou poignées.'],['conv','plan','Tirage convergent orienté vers le bas.']],setup:['Cuisses bloquées sous les supports.','Prise légèrement plus large que les épaules.','Poitrine sortie, épaules basses.'],move:['Tirer vers le haut de la poitrine.','Coudes dirigés vers le sol.','Remontée contrôlée.'],avoid:['Tirer derrière la nuque.','Grand élan du buste.','Épaules vers les oreilles.']},
  seatedRow:{n:'Rowing assis',t:'Dos • Biceps',sets:3,reps:'8–12',rest:120,rir:'2–3',v:'back',p:['mid','lats'],s:['biceps','rear'],pn:['Rhomboïdes','Grand dorsal'],sn:['Biceps','Arrière d’épaule'],m:[['row','rec','Machine guidée et stable.'],['cable','alt','Poulie basse, poignée neutre.'],['conv','plan','Alternative unilatérale ou bilatérale.']],setup:['Poignées vers le bas des côtes.','Sternum haut, épaules basses.','Pieds stables.'],move:['Tirer les coudes en arrière.','Rapprocher les omoplates.','Revenir lentement.'],avoid:['Tirer uniquement avec les bras.','Balancer le torse.','Hausser les épaules.']},
- shoulderPress:{n:'Développé épaules',t:'Épaules • Triceps',sets:3,reps:'8–12',rest:120,rir:'2–3',v:'front',p:['delts'],s:['triceps','chest'],pn:['Deltoïdes'],sn:['Triceps','Haut des pectoraux'],m:[['shoulder','rec','Machine guidée.'],['smith','alt','Développé assis.'],['dumb','plan','Haltères, version assise.']],setup:['Poignées autour du niveau des oreilles.','Dos plaqué au dossier.','Poignets dans l’axe.'],move:['Pousser sans hausser les épaules.','Côtes contrôlées.','Redescendre lentement.'],avoid:['Cambrure importante.','Coudes claqués.','Amplitude douloureuse.']},
+ shoulderPress:{n:'Développé épaules',t:'Épaules • Triceps',sets:3,reps:'8–10',rest:90,rir:'2–3',v:'front',p:['delts'],s:['triceps','chest'],pn:['Deltoïdes'],sn:['Triceps','Haut des pectoraux'],m:[['shoulder','rec','Machine guidée.'],['smith','alt','Développé assis.'],['dumb','plan','Haltères, version assise.']],setup:['Poignées autour du niveau des oreilles.','Dos plaqué au dossier.','Poignets dans l’axe.'],move:['Pousser sans hausser les épaules.','Côtes contrôlées.','Redescendre lentement.'],avoid:['Cambrure importante.','Coudes claqués.','Amplitude douloureuse.']},
+ shoulderPressVolume:{n:'Développé épaules',t:'Épaules • Triceps',sets:3,reps:'10–12',rest:90,rir:'2–3',v:'front',p:['delts'],s:['triceps','chest'],pn:['Deltoïdes'],sn:['Triceps','Haut des pectoraux'],m:[['shoulder','rec','Même machine que la séance A.'],['smith','alt','Développé assis.'],['dumb','plan','Haltères, version assise.']],setup:['Poignées autour du niveau des oreilles.','Dos plaqué au dossier.','Poignets dans l’axe.'],move:['Pousser sans hausser les épaules.','Côtes contrôlées.','Redescendre lentement.'],avoid:['Cambrure importante.','Coudes claqués.','Amplitude douloureuse.']},
  lateralRaise:{n:'Élévations latérales',t:'Épaules',sets:4,reps:'12–20',rest:60,rir:'1–2',v:'front',p:['delts'],s:['traps'],pn:['Deltoïde moyen'],sn:['Trapèzes supérieurs'],m:[['lateral','rec','Machine dédiée si disponible.'],['cable','alt','Poulie basse, un bras.'],['dumb','plan','Haltères légers.']],setup:['Bras légèrement fléchis.','Épaules basses.','Charge sans élan.'],move:['Élever les coudes sur les côtés.','Monter jusqu’à hauteur d’épaule.','Redescendre lentement.'],avoid:['Hausser les épaules.','Mains plus hautes que les coudes.','Élan des jambes.']},
  reverseFly:{n:'Reverse fly',t:'Arrière d’épaule • Haut du dos',sets:3,reps:'12–20',rest:75,rir:'1–2',v:'back',p:['rear'],s:['mid','traps'],pn:['Deltoïde postérieur'],sn:['Rhomboïdes','Trapèzes moyens'],m:[['rear','rec','Pec Deck face au dossier.'],['cable','alt','Deux poulies croisées.'],['dumb','plan','Oiseau buste incliné.']],setup:['Poignées à hauteur d’épaule.','Sternum contre le dossier.','Coudes légèrement fléchis.'],move:['Ouvrir les bras.','Conduire par les coudes.','Revenir lentement.'],avoid:['Cambrer.','Tirer avec les trapèzes hauts.','Charge excessive.']},
  triceps:{n:'Extension triceps',t:'Triceps',sets:2,reps:'10–15',rest:60,rir:'1–2',v:'back',p:['triceps'],s:[],pn:['Triceps'],sn:[],m:[['cable','rec','Poulie haute avec corde ou barre.'],['tri','alt','Machine guidée.']],setup:['Coudes près du buste.','Buste légèrement incliné.','Poignets neutres.'],move:['Tendre les coudes.','Écarter légèrement la corde.','Remonter sans avancer les coudes.'],avoid:['Balancer le corps.','Bouger les épaules.','Casser les poignets.']},
  biceps:{n:'Curl biceps',t:'Biceps',sets:2,reps:'10–15',rest:60,rir:'1–2',v:'front',p:['biceps'],s:['forearms'],pn:['Biceps'],sn:['Avant-bras'],m:[['bic','rec','Machine guidée ou pupitre.'],['cable','alt','Poulie basse.'],['dumb','plan','Haltères assis ou debout.']],setup:['Coudes stables.','Épaules basses.','Amplitude complète.'],move:['Fléchir sans avancer les épaules.','Contracter en haut.','Redescendre lentement.'],avoid:['Balancer le buste.','Coudes vers l’avant.','Laisser tomber la charge.']},
  rdl:{n:'Soulevé de terre roumain',t:'Ischios • Fessiers',sets:3,reps:'8–10',rest:150,rir:'2–3',v:'back',p:['ham','glutes'],s:['lower'],pn:['Ischio-jambiers','Grand fessier'],sn:['Érecteurs du rachis'],m:[['smith','rec','Trajectoire stable.'],['dumb','alt','Deux haltères proches des cuisses.']],setup:['Pieds largeur de bassin.','Genoux légèrement fléchis.','Dos long, charge près des jambes.'],move:['Reculer les hanches.','Descendre jusqu’à sentir les ischios.','Revenir par extension de hanche.'],avoid:['Transformer en squat.','Arrondir le dos.','Éloigner la charge.']},
  gluteBridge:{n:'Glute bridge',t:'Fessiers',sets:3,reps:'10–15',rest:120,rir:'2',v:'back',p:['glutes'],s:['ham'],pn:['Grand fessier'],sn:['Ischio-jambiers'],m:[['hip','rec','Variante guidée.'],['smith','alt','Version au sol ou banc bas.'],['dumb','plan','Haltère sur le bassin.']],setup:['Dos au sol ou omoplates sur banc.','Pieds proches des fessiers.','Bassin neutre.'],move:['Pousser dans les talons.','Contracter les fessiers.','Redescendre sous contrôle.'],avoid:['Cambrer.','Pousser sur les pointes.','Genoux excessivement ouverts.']},
- legCurl:{n:'Leg curl',t:'Ischio-jambiers',sets:3,reps:'10–15',rest:90,rir:'1–2',v:'back',p:['ham'],s:['calves'],pn:['Ischio-jambiers'],sn:['Mollets'],m:[['curl','rec','Version assise ou couchée.']],setup:['Axe aligné avec le genou.','Rouleau au-dessus du talon.','Bassin plaqué.'],move:['Fléchir les genoux.','Contracter en fin d’amplitude.','Revenir lentement.'],avoid:['Décoller les hanches.','Donner de l’élan.','Claquer les poids.']},
+ legCurl:{n:'Leg curl',t:'Ischio-jambiers',sets:3,reps:'8–10',rest:90,rir:'2–3',v:'back',p:['ham'],s:['calves'],pn:['Ischio-jambiers'],sn:['Mollets'],m:[['curl','rec','Version assise ou couchée.']],setup:['Axe aligné avec le genou.','Rouleau au-dessus du talon.','Bassin plaqué.'],move:['Fléchir les genoux.','Contracter en fin d’amplitude.','Revenir lentement.'],avoid:['Décoller les hanches.','Donner de l’élan.','Claquer les poids.']},
+ legCurlVolume:{n:'Leg curl',t:'Ischio-jambiers',sets:3,reps:'10–12',rest:90,rir:'2–3',v:'back',p:['ham'],s:['calves'],pn:['Ischio-jambiers'],sn:['Mollets'],m:[['curl','rec','Même machine que la séance A, avec une charge légèrement plus légère.']],setup:['Axe aligné avec le genou.','Rouleau au-dessus du talon.','Bassin plaqué.'],move:['Fléchir les genoux.','Contracter en fin d’amplitude.','Revenir lentement.'],avoid:['Décoller les hanches.','Donner de l’élan.','Claquer les poids.']},
  kickback:{n:'Kickback fessier',t:'Fessiers',sets:2,reps:'12–20 / jambe',rest:60,rir:'1–2',v:'back',p:['glutes'],s:['ham'],pn:['Grand fessier'],sn:['Ischio-jambiers'],m:[['kick','rec','Machine dédiée.'],['cable','alt','Poulie basse avec chevillère.']],setup:['Bassin face à la machine.','Jambe d’appui fléchie.','Tronc stable.'],move:['Pousser la jambe en arrière.','Garder le bassin de face.','Revenir lentement.'],avoid:['Cambrer.','Ouvrir la hanche.','Lancer la jambe.']},
  reverseCrunch:{n:'Reverse crunch',t:'Abdominaux',sets:3,reps:'10–20',rest:60,rir:'1–2',v:'front',p:['abs'],s:['hipFlex'],pn:['Grand droit de l’abdomen'],sn:['Fléchisseurs de hanche'],m:[['bench','rec','Banc plat ou légèrement décliné.'],['roman','alt','Relevés de genoux contrôlés.']],setup:['Genoux fléchis.','Bas du dos plaqué.','Tenir le banc si nécessaire.'],move:['Enrouler le bassin vers les côtes.','Décoller légèrement le sacrum.','Redescendre sans creuser.'],avoid:['Balancer les jambes.','Prendre de l’élan.','Tout faire avec les hanches.']}
 };
 const S={
- A:{n:'Séance A',sub:'Fessiers • Quadriceps • Abdominaux',dur:58,rir:'2–3',ex:['hipThrust','legPress','split','legExtension','abductor','cableCrunch']},
- B:{n:'Séance B',sub:'Dos • Épaules • Bras • Abdominaux',dur:55,rir:'3',ex:['latPulldown','seatedRow','shoulderPress','lateralRaise','reverseFly','triceps','biceps','cableCrunch']},
- C:{n:'Séance C',sub:'Fessiers • Ischios • Épaules • Abdominaux',dur:55,rir:'2–3',ex:['rdl','gluteBridge','legCurl','kickback','abductor','lateralRaise','reverseCrunch']}
+ A:{n:'Séance A — Force',sub:'4 machines • Force utile trail + silhouette',dur:35,rir:'2–3',ex:['legPress','legCurl','latPulldown','shoulderPress']},
+ B:{n:'Séance B — Trail + silhouette',sub:'4 machines • Unilatéral + volume contrôlé',dur:35,rir:'2–3',ex:['legPressSingle','legCurlVolume','latPulldownVolume','shoulderPressVolume']}
 };
 
 const PLAN=[
- ['2026-08','01','Août 2026','Remise en route','Apprentissage des mouvements, priorité au haut du corps et reprise prudente des jambes.',['Technique','Haut du corps','Zéro dette jambes'],[
-  ['10–16 août','B réduite + haut du corps léger','RIR 3. Aucun travail jambes chargé.'],['17–23 août','Bloc montagne','Pas de musculation structurée.'],['24–30 août','B complète + A/C réduites','Reprise progressive seulement si les jambes sont normales.']]],
- ['2026-09','02','Septembre 2026','Construction musculaire I','Premier vrai bloc d’hypertrophie, tout en absorbant les courses secondaires.',['Charges de référence','Épaules','Fessiers'],[
-  ['31 août–6 sept.','B complète + A réduite','Préserver de la fraîcheur.'],['7–13 sept.','B complète + C réduite','Ajuster selon la récupération.'],['14–20 sept.','B + A + C complètes','Première semaine structurée.'],['21–27 sept.','B + A + C réduite','Début spécifique TransLantau.'],['28 sept.–4 oct.','Volume à 50–60 %','Entretien sans record.']]],
- ['2026-10','03','Octobre 2026','Protéger le pic trail','Le développement musculaire passe en entretien. Les jambes sont retirées dès que la charge trail l’exige.',['Fraîcheur','Entretien haut du corps','Récupération'],[
-  ['5–11 oct.','B courte','25–30 min, RIR 4.'],['12–18 oct.','B courte uniquement','Semaine reine trail.'],['19–25 oct.','B + A/C optionnelles','Seulement si récupération excellente.'],['26 oct.–1 nov.','Activation 25 min','Tirages, épaules, tronc.']]],
- ['2026-11','04','Novembre 2026','TransLantau + récupération','Affûtage, course puis récupération complète avant le bloc principal de transformation.',['Course A','Récupération','Reprise graduelle'],[
-  ['2–8 nov.','Activation 15–20 min','Très légère.'],['9–15 nov.','Aucune musculation','TransLantau le 14 novembre.'],['16–22 nov.','Récupération','Marche et mobilité.'],['23–29 nov.','B légère + full-body léger','50 % du volume.']]],
- ['2026-12','05','Décembre 2026','Hypertrophie structurée','Début du bloc principal avec trois séances hebdomadaires et double progression.',['Volume contrôlé','Progression','Technique'],[
-  ['30 nov.–6 déc.','B + A/C réduites','RIR 3.'],['7–13 déc.','B + A + C','RIR 3.'],['14–20 déc.','B + A + C','RIR 2.'],['21–27 déc.','B + A + C','RIR 2.'],['28 déc.–3 jan.','Deload','50–60 % des séries.']]],
- ['2027-01','06','Janvier 2027','Hypertrophie II','Progression régulière sur les mouvements de référence sans hausse brutale du volume.',['Hip thrust','Tirage vertical','Développé épaules'],[
-  ['4–10 jan.','B + A + C','RIR 3.'],['11–17 jan.','B + A + C','RIR 2.'],['18–24 jan.','B + A + C','RIR 1–2 sur isolations.'],['25–31 jan.','Deload','B/A réduites.']]],
- ['2027-02','07','Février 2027','Hypertrophie III','Ajouter des répétitions propres avant d’augmenter les charges.',['Double progression','Fessiers','Dos'],[
-  ['1–7 fév.','B + A + C','RIR 3.'],['8–14 fév.','B + A + C','RIR 2.'],['15–21 fév.','B + A + C','RIR 1–2.'],['22–28 fév.','Deload','Volume divisé par deux.']]],
- ['2027-03','08','Mars 2027','Épaules & dos','Accent esthétique sur la largeur d’épaules, le haut du dos et le maintien.',['Deltoïdes','Dos','Triceps'],[
-  ['1–7 mars','B + A + C','RIR 3.'],['8–14 mars','B + A + C','RIR 2.'],['15–21 mars','B + A + C','RIR 1–2.'],['22–28 mars','Deload','RIR 4.']]],
- ['2027-04','09','Avril 2027','Hypertrophie IV','Nouveau cycle complet avec stabilité technique et progression mesurable.',['Régularité','Fessiers','Épaules'],[
-  ['29 mars–4 avr.','B + A + C','RIR 3.'],['5–11 avr.','B + A + C','RIR 2.'],['12–18 avr.','B + A + C','RIR 1–2.'],['19–25 avr.','Deload','Volume réduit.']]],
- ['2027-05','10','Mai 2027','Recomposition','Maintenir la taille fine tout en développant les groupes prioritaires.',['Performance','Nutrition stable','Photos'],[
-  ['26 avr.–2 mai','B + A + C','RIR 3.'],['3–9 mai','B + A + C','RIR 2.'],['10–16 mai','B + A + C','RIR 1–2.'],['17–23 mai','Deload','B/A réduites.'],['24–30 mai','Nouveau cycle','RIR 3.']]],
- ['2027-06','11','Juin 2027','Consolidation','Continuer les gains sans sèche agressive ; priorité à la qualité des séances.',['Force technique','Récupération','Trail stable'],[
-  ['31 mai–6 juin','B + A + C','RIR 2.'],['7–13 juin','B + A + C','RIR 1–2.'],['14–20 juin','Deload','Volume réduit.'],['21–27 juin','B + A + C','RIR 3.']]],
- ['2027-07','12','Juillet 2027','Consolidation II','Dernier bloc complet avant le bilan annuel et la comparaison visuelle.',['Charges propres','Photos','Mesures'],[
-  ['28 juin–4 juil.','B + A + C','RIR 2.'],['5–11 juil.','B + A + C','RIR 1–2.'],['12–18 juil.','Deload','Volume réduit.'],['19–25 juil.','B + A + C','RIR 3.'],['26 juil.–1 août','B + A + C','RIR 2.']]],
- ['2027-08','13','Août 2027','Bilan 12 mois','Comparer les données, photos et performances avant de définir le cycle suivant.',['Bilan','Photos face/profil/dos','Nouveau plan'],[
-  ['2–8 août','B + A + C','RIR 2 puis bilan complet.']]]
+ ['2026-08','01','Août 2026','Simplification & repères','Passage au format définitif : deux séances, quatre machines, sans dette de fatigue pour le trail.',['4 machines','Technique','Charges de départ'],[
+  ['24–30 août','A + B','RIR 3. Charges prudentes ; objectif principal : mémoriser les réglages et finir fraîche.']]],
+ ['2026-09','02','Septembre 2026','Construire sans gêner le trail','Installer deux séances régulières et progresser par petites étapes avant la Gapen’Cîmes.',['2 séances / semaine','Progression','Fraîcheur jambes'],[
+  ['31 août–6 sept.','A + B','A lourde contrôlée ; B plus légère et unilatérale.'],['7–13 sept.','A + B','Ajouter des répétitions avant d’ajouter du poids.'],['14–20 sept.','A + B','RIR 2–3 ; aucune série à l’échec.'],['21–27 sept.','A + B','Maintenir les charges si la charge trail augmente.'],['28 sept.–4 oct.','1 séance légère','Réduire les séries de 40 % et garder au moins 4 jours avant la Gapen’Cîmes.']]],
+ ['2026-10','03','Octobre 2026','Course puis spécifique TransLantau','Récupérer de la Gapen’Cîmes puis revenir à deux séances sans concurrencer les sorties longues.',['Récupération','Force utile','Spécifique trail'],[
+  ['5–11 oct.','B légère puis reprise','Reprendre seulement avec jambes normales ; RIR 3–4.'],['12–18 oct.','A + B','Retour au format normal.'],['19–25 oct.','A + B','Progression uniquement si la sortie longue est bien absorbée.'],['26 oct.–1 nov.','A + B','Dernière semaine complète avant l’affûtage TransLantau.']]],
+ ['2026-11','04','Novembre 2026','Affûtage, TransLantau, récupération','La musculation passe temporairement au second plan autour de la course du 15 novembre.',['TransLantau','Fraîcheur','Reprise graduelle'],[
+  ['2–8 nov.','1 séance légère','2 séries par machine, RIR 4 ; aucune recherche de progression.'],['9–15 nov.','Aucune musculation','Affûtage et TransLantau le 15 novembre.'],['16–22 nov.','Récupération','Pas de reprise jambes tant que les courbatures ou la fatigue persistent.'],['23–29 nov.','A + B à 70 %','Reprise avec charges réduites et RIR 3–4.']]],
+ ['2026-12','05','Décembre 2026','Bloc athlétique I','Deux séances fixes et progression mesurable sur les quatre machines.',['Force','Dos & épaules','Jambes robustes'],[
+  ['30 nov.–6 déc.','A + B','Revenir aux charges de référence.'],['7–13 déc.','A + B','Chercher +1 répétition sur les séries propres.'],['14–20 déc.','A + B','Si haut de fourchette atteint partout : +2,5 à 5 % de charge.'],['21–27 déc.','A + B','Conserver RIR 2–3.'],['28 déc.–3 jan.','Délestage','1 séance ou 2 séries par machine, sans progression.']]],
+ ['2027-01','06','Janvier 2027','Bloc athlétique II','Consolider la force des jambes et développer dos et épaules sans augmenter le nombre d’exercices.',['Double progression','4 machines','Régularité'],[
+  ['4–10 jan.','A + B','Charge stable, progression en répétitions.'],['11–17 jan.','A + B','Augmenter seulement les mouvements arrivés en haut de fourchette.'],['18–24 jan.','A + B','RIR 2 sur dernière série si récupération excellente.'],['25–31 jan.','Délestage','Réduire le volume de 40–50 %.']]],
+ ['2027-02','07','Février 2027','Bloc athlétique III','Poursuivre la transformation avec le minimum efficace et une progression lente mais continue.',['Presse','Tirage vertical','Épaules'],[
+  ['1–7 fév.','A + B','Progression normale.'],['8–14 fév.','A + B','Ajouter des répétitions avant la charge.'],['15–21 fév.','A + B','RIR 2–3 ; technique stricte.'],['22–28 fév.','Délestage','1 séance ou 2 séries par machine.']]],
+ ['2027-03','08','Mars 2027','Dos & épaules visibles','Même plan, mais priorité à une exécution parfaite du tirage et du développé épaules.',['Silhouette en V','Posture','Progression'],[
+  ['1–7 mars','A + B','Progression normale.'],['8–14 mars','A + B','Stabiliser la charge si le trail monte.'],['15–21 mars','A + B','Dernière semaine progressive.'],['22–28 mars','Délestage','Volume réduit de 40–50 %.']]],
+ ['2027-04','09','Avril 2027','Robustesse trail','Continuer à renforcer quadriceps et ischios tout en gardant une fatigue musculaire compatible avec les sorties longues.',['Quadriceps','Ischios','Unilatéral'],[
+  ['29 mars–4 avr.','A + B','Progression normale.'],['5–11 avr.','A + B','Presse A lourde, presse B strictement contrôlée.'],['12–18 avr.','A + B','Pas d’échec musculaire.'],['19–25 avr.','Délestage','1 séance ou volume réduit.']]],
+ ['2027-05','10','Mai 2027','Recomposition & performance','Maintenir le même socle pour rendre la progression visible sur les photos et les charges.',['Silhouette','Performance','Mesures'],[
+  ['26 avr.–2 mai','A + B','Reprise progressive.'],['3–9 mai','A + B','Progression en répétitions.'],['10–16 mai','A + B','Progression de charge si critères atteints.'],['17–23 mai','Délestage','Réduire le volume.'],['24–30 mai','A + B','Nouveau cycle.']]],
+ ['2027-06','11','Juin 2027','Consolidation estivale','Préserver les gains même si le volume trail augmente : deux séances quand possible, une séance en semaine très chargée.',['Minimum efficace','Trail prioritaire','Maintien force'],[
+  ['31 mai–6 juin','A + B','Format normal.'],['7–13 juin','A + B','Format normal.'],['14–20 juin','1 à 2 séances','Adapter au volume trail ; ne pas rattraper une séance manquée.'],['21–27 juin','Délestage','Volume réduit.']]],
+ ['2027-07','12','Juillet 2027','Consolidation II','Dernier bloc complet avant le bilan annuel, toujours avec les mêmes quatre machines.',['Régularité','Photos','Charges propres'],[
+  ['28 juin–4 juil.','A + B','Progression normale.'],['5–11 juil.','A + B','Ajouter des répétitions.'],['12–18 juil.','A + B','Ajouter de la charge seulement si toutes les séries sont propres.'],['19–25 juil.','Délestage','Volume réduit.'],['26 juil.–1 août','A + B','Reprise normale.']]],
+ ['2027-08','13','Août 2027','Bilan 12 mois','Comparer photos, mensurations et charges. Garder le même socle si la progression continue.',['Bilan','4 mouvements clés','Cycle suivant'],[
+  ['2–8 août','A + B puis bilan','Pas de test maximal : comparer les charges de travail, les répétitions et les photos.']]]
 ].map(([id,no,label,obj,desc,prio,weeks])=>({id,no,label,obj,desc,prio,weeks}));
 
 function defaults(){
@@ -380,17 +383,18 @@ function load(){
    photos:Array.isArray(x.photos)?x.photos:[],workouts:Array.isArray(x.workouts)?x.workouts:[]};
  }catch{return defaults()}
 }
-let state=load(),monthId=PLAN.find(x=>x.id===iso().slice(0,7))?.id||PLAN[0].id,sessionKey='B',draft=null,photoDraft={front:null,side:null,back:null},timerInt=null,timerLeft=0;
+let state=load(),monthId=PLAN.find(x=>x.id===iso().slice(0,7))?.id||PLAN[0].id,sessionKey='A',draft=null,photoDraft={front:null,side:null,back:null},timerInt=null,timerLeft=0;
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch{toast('Stockage local saturé. Exporte les données et retire d’anciennes photos.')}}
 function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),2700)}
 function phase(d=new Date()){
  const k=iso(d).slice(0,7);
- if(k==='2026-08')return{n:'Reprise',full:'Reprise & technique',target:2};
- if(k==='2026-09')return{n:'Construction I',full:'Construction musculaire I',target:3};
- if(k==='2026-10')return{n:'Pic trail',full:'Protection du pic trail',target:1};
+ if(k==='2026-08')return{n:'Simplification',full:'Simplification & repères',target:2};
+ if(k==='2026-09')return{n:'Construction',full:'Construire sans gêner le trail',target:2};
+ if(k==='2026-10')return{n:'Spécifique trail',full:'Course puis spécifique TransLantau',target:2};
  if(k==='2026-11')return{n:'Course & récup.',full:'TransLantau & récupération',target:1};
- if(k>='2026-12'&&k<='2027-07')return{n:'Hypertrophie',full:'Hypertrophie structurée',target:3};
- return{n:'Bilan',full:'Bilan annuel',target:3}
+ if(k>='2026-12'&&k<='2027-05')return{n:'Bloc athlétique',full:'Force + silhouette athlétique',target:2};
+ if(k>='2027-06'&&k<='2027-07')return{n:'Consolidation',full:'Consolidation & trail',target:2};
+ return{n:'Bilan',full:'Bilan annuel',target:2}
 }
 function weekStart(d=new Date()){const x=new Date(d),day=(x.getDay()+6)%7;x.setDate(x.getDate()-day);x.setHours(12,0,0,0);return x}
 function thisWeek(){const a=weekStart(),b=new Date(a);b.setDate(b.getDate()+7);return state.workouts.filter(w=>{const d=parse(w.date);return d>=a&&d<b})}
@@ -415,11 +419,11 @@ function renderToday(){
  const c=[...state.composition].sort((a,b)=>b.date.localeCompare(a.date))[0];$('#kpiWeight').textContent=c?.weight?show(c.weight,'kg'):'—';$('#kpiWeightDate').textContent=c?fmt(parse(c.date),{day:'numeric',month:'short'}):'Aucune mesure';
  $('#heroText').textContent=`${sess.n} — ${sess.sub}. Exécution contrôlée, RIR cible ${sess.rir}.`;$('#todayTitle').textContent=`${sess.n} — ${sess.sub}`;$('#todayMeta').textContent=`${sess.ex.length} exercices · ${sess.dur} min · RIR ${sess.rir}`;
  $('#todayExercises').innerHTML=sess.ex.map((id,i)=>{const ex=E[id],pm=mainMachine(id);return`<div class="ex-card"><div class="ex-no">${String(i+1).padStart(2,'0')}</div><div><h4>${ex.n}</h4><div class="ex-meta"><span>${ex.sets} × ${ex.reps}</span><span>•</span><span>${ex.t}</span><span>•</span><span>${esc(pm.mach?.name||'Machine')}</span></div></div><div class="ex-actions">${numChip(id)}<button class="detail" data-detail="${id}">Machine / détail</button></div></div>`}).join('');
- $('#miniWeek').innerHTML=[['Séance B — Haut du corps','Séance du jour','on'],['Trail récupération','Séance parallèle',''],['Séance A — Fessiers','Prochaine séance','']].map(x=>`<div class="mini-row"><i class="dot ${x[2]}"></i><div><b>${x[0]}</b><small>${x[1]}</small></div></div>`).join('')
+ $('#miniWeek').innerHTML=[['Séance A — Force','4 machines • séance 1','on'],['Trail','Priorité du plan principal',''],['Séance B — Trail + silhouette','4 machines • séance 2','']].map(x=>`<div class="mini-row"><i class="dot ${x[2]}"></i><div><b>${x[0]}</b><small>${x[1]}</small></div></div>`).join('')
 }
 function renderWeek(){
  const start=weekStart(),end=new Date(start);end.setDate(end.getDate()+6);$('#weekTitle').textContent=`${fmt(start,{day:'numeric',month:'long'})} → ${fmt(end,{day:'numeric',month:'long',year:'numeric'})}`;
- const sch=[['Musculation','strength','Séance B','Dos • Épaules • Bras'],['Musculation','strength','Séance A','Fessiers • Quadriceps'],['Trail','trail','Récupération','Allure facile'],['Musculation','strength','Séance C','Fessiers • Ischios • Épaules'],['Repos','','Récupération','Mobilité légère'],['Trail','trail','Séance trail','Selon le plan principal'],['Trail','trail','Sortie longue','Priorité du week-end']];
+ const sch=[['Musculation','strength','Séance A — Force','Presse • Leg curl • Tirage • Épaules'],['Trail','trail','Séance trail','Selon le plan trail principal'],['Repos','','Récupération','Mobilité légère / marche'],['Musculation','strength','Séance B — Trail + silhouette','Même 4 machines • presse 1 jambe'],['Trail','trail','Séance trail','Selon le plan trail principal'],['Repos','','Flexible','Repos ou trail facile selon le plan'],['Trail','trail','Sortie longue','Priorité du week-end']];
  $('#weekGrid').innerHTML=sch.map((s,i)=>{const d=new Date(start);d.setDate(d.getDate()+i);return`<div class="day${iso(d)===iso()?' today':''}"><div><span class="day-name">${fmt(d,{weekday:'short'}).replace('.','')}</span><div class="day-num">${d.getDate()}</div></div><span class="tag ${s[1]}">${s[0]}</span><div class="session"><b>${s[2]}</b><small>${s[3]}</small></div></div>`}).join('')
 }
 function renderPlan(){
@@ -635,7 +639,15 @@ function bestForWorkout(w,id){
  return valid.map(s=>({weight:+s.weight,reps:+s.reps,rir:s.rir===''?null:+s.rir,value:+s.weight*(1+(+s.reps)/30)})).sort((a,b)=>b.value-a.value)[0]
 }
 function movementPoints(id){
- return [...state.workouts].sort((a,b)=>a.date.localeCompare(b.date)).map(w=>{const b=bestForWorkout(w,id);return b?{date:w.date,...b}:null}).filter(Boolean)
+ const groups={
+  legCurl:['legCurl','legCurlVolume'],
+  latPulldown:['latPulldown','latPulldownVolume'],
+  shoulderPress:['shoulderPress','shoulderPressVolume']
+ },ids=groups[id]||[id];
+ return [...state.workouts].sort((a,b)=>a.date.localeCompare(b.date)).map(w=>{
+  const best=ids.map(x=>bestForWorkout(w,x)).filter(Boolean).sort((a,b)=>b.value-a.value)[0];
+  return best?{date:w.date,...best}:null
+ }).filter(Boolean)
 }
 function chartSvg(points){
  if(!points.length)return'<div class="empty chart-empty">Enregistre une séance avec charge et répétitions pour afficher la courbe.</div>';
@@ -654,7 +666,7 @@ function chartSvg(points){
  </svg><div class="chart-caption"><span>Indice estimé de force (kg)</span><b>${points.at(-1).weight} kg × ${points.at(-1).reps} rép.</b></div></div>`
 }
 function renderProgress(){
- const keys=['hipThrust','legPress','legCurl','latPulldown','shoulderPress'];
+ const keys=['legPress','legCurl','latPulldown','shoulderPress'];
  if(!$('#progressSelect').options.length)$('#progressSelect').innerHTML=keys.map(id=>`<option value="${id}">${E[id].n}</option>`).join('');
  const selected=$('#progressSelect').value||keys[0],pts=movementPoints(selected);$('#strengthChart').innerHTML=chartSvg(pts);
  const recent=state.workouts.filter(w=>parse(w.date)>=new Date(Date.now()-28*86400000)),target=Math.max(1,phase().target*4),adh=Math.min(100,Math.round(recent.length/target*100));
@@ -772,7 +784,7 @@ renderAll();
 .link{border:0;background:transparent;color:var(--bronze);font-size:10px;font-weight:850;cursor:pointer;padding:4px 0;text-decoration:underline;text-underline-offset:3px}
 .danger-link{color:var(--danger)}.list-row{min-height:61px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}
 .list-row:last-child{border-bottom:0}.list-row b{font-size:11px}.list-row small{display:block;color:var(--muted);font-size:9px;margin-top:4px}
-.session-picker{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:13px}.session-picker button{border:1px solid var(--line);background:#fff;border-radius:15px;padding:12px;text-align:left;cursor:pointer}
+.session-picker{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:13px}.session-picker button{border:1px solid var(--line);background:#fff;border-radius:15px;padding:12px;text-align:left;cursor:pointer}
 .session-picker button.active{background:var(--forest);border-color:var(--forest);color:#fff;box-shadow:0 10px 28px #28494129}.session-picker b{font-size:16px}.session-picker span{display:block;margin-top:4px;font-size:9px;line-height:1.35;opacity:.7}
 .workout-intro{margin-bottom:13px;padding:16px;border:1px solid var(--line);border-radius:17px;background:#ffffff8e;display:grid;grid-template-columns:1fr minmax(250px,.7fr);gap:14px;align-items:center}
 .workout-intro h3{margin:5px 0 0;font-size:16px}.chart-shell{margin-top:17px}.strength-svg{width:100%;height:auto;overflow:visible}.strength-svg text{font-size:10px;fill:var(--muted);font-family:inherit}
